@@ -1,1 +1,51 @@
-<p>new-transference works!</p>
+<div class="container mt-4">
+  <h1 class="text-left cursor-default">Transferir</h1>
+  <div class="container mt-4">
+    <div class="d-flex flex-column input-hidden-number-arrows">
+      <label>Buscar Destinatario:</label>
+      <input pInputText type='number' class="input-number input-default-width"
+        [formControl]="receiverTransferForm.controls.receiver" />
+      <ng-container *ngIf="receiver; then receiverInfo; else notReceiverInfo;">
+      </ng-container>
+    </div>
+    <div class="d-flex flex-column mt-2">
+      <label>Monto:</label>
+      <input pInputText type="number" class="input-default-width"
+        [formControl]="receiverTransferForm.controls.amount" />
+      <small class="form-text text-muted">Recuerda que el monto debe ser mayor a $0.</small>
+    </div>
+    <div class="d-flex justify-content-center mt-3 mb-3">
+      <button pButton pRipple type="button" label="Transferir" iconPos="left" icon="pi pi-check" (click)="transfer()"
+        [disabled]="receiverTransferForm.invalid" class="p-button-raised p-button-secondary px-5 py-3">
+      </button>
+    </div>
+  </div>
+</div>
+
+<ng-template #receiverInfo>
+  <div class="receiver-container">
+    <h5 class="cursor-default center-self">Detalles del destinatario:</h5>
+    <p class="cursor-default ml-3 mt-4">
+      <span>Nombre: </span>
+      <span>{{ receiver?.name }}</span>
+    </p>
+    <p class="cursor-default ml-4">
+      <span>Correo: </span>
+      <span>{{ receiver?.email }}</span>
+    </p>
+    <p class="cursor-default ml-3">
+      <span>Banco: </span>
+      <span>{{ receiver?.bank }}</span>
+    </p>
+    <p class="cursor-default">
+      <span>Tipo de cuenta: </span>
+      <span>{{ receiver?.accountType }}</span>
+    </p>
+  </div>
+</ng-template>
+
+<ng-template #notReceiverInfo>
+  <div class="receiver-container">
+    <h5 class="cursor-default">Ingresa un destinatario válido.</h5>
+  </div>
+</ng-template>
