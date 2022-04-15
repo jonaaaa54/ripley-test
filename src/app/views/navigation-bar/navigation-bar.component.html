@@ -1,11 +1,12 @@
-<ul ngbNav #nav="ngbNav" class="nav-tabs">
-  <li ngbNavItem>
-    <a ngbNavLink>First</a>
-    <ng-template ngbNavContent>First content</ng-template>
-  </li>
-  <li ngbNavItem>
-    <a ngbNavLink>Second</a>
-    <ng-template ngbNavContent>Second content</ng-template>
-  </li>
-</ul>
-<div [ngbNavOutlet]="nav"></div>
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    Banco Ripley
+    {{ this.actualComponent
+      ? '- ' + this.actualComponent
+      : ''
+    }}
+  </a>
+  <a class="btn">Nuevo Destinatario</a>
+  <button class="btn">Transferir</button>
+  <button class="btn">Historial</button>
+</nav>
