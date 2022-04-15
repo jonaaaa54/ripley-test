@@ -13,6 +13,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { TableComponent } from './components/table/table.component';
 import { NewReceiverComponent } from './views/new-receiver/new-receiver.component';
 import { NavigationBarComponent } from './views/navigation-bar/navigation-bar.component';
 import { NewTransferenceComponent } from './views/new-transference/new-transference.component';
@@ -21,6 +22,7 @@ import { TransferHistoryComponent } from './views/transfer-history/transfer-hist
 @NgModule({
   declarations: [
     AppComponent,
+    TableComponent,
     NewReceiverComponent,
     NavigationBarComponent,
     NewTransferenceComponent,
