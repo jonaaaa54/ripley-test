@@ -2,14 +2,14 @@
   <p-table [value]="rows" responsiveLayout="stack" styleClass="p-datatable-striped">
     <ng-template pTemplate="header">
       <tr>
-        <th *ngFor="let col of columns">
+        <th class="default-cursor" *ngFor="let col of columns">
           {{col}}
         </th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-rows>
       <tr>
-        <td *ngFor="let col of columns">
+        <td class="default-cursor" *ngFor="let col of columns">
           <span class="p-column-title">
             <strong>{{col}}:</strong>
           </span>
