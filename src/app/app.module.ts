@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -29,6 +30,7 @@ import { NavigationBarComponent } from './views/navigation-bar/navigation-bar.co
     InputTextModule,
     ScrollingModule,
     AppRoutingModule,
+    InputNumberModule,
     ReactiveFormsModule,
     BrowserAnimationsModule
   ],
