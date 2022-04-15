@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
-import { Receiver, TransferToReceiver, TransferToReceiverFormControl } from 'src/app/models/receiver-model';
+import { Receiver, TransferToReceiverFormControl } from 'src/app/models/receiver-model';
 
 @Component({
   selector: 'app-new-transference',
