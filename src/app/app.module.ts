@@ -5,9 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { NavigationBarComponent } from './views/navigation-bar/navigation-bar.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavigationBarComponent
   ],
   imports: [
     BrowserModule,
