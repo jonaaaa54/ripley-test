@@ -32,3 +32,21 @@ export interface ReceiverFormControl extends FormGroup {
     accountNumber: AbstractControl;
   };
 };
+
+export interface TransferToReceiver {
+  /** Amount to transfer. */
+  amount: number;
+  /** Receiver to transfer. */
+  receiver: string;
+};
+
+export interface TransferToReceiverFormControl extends FormGroup {
+  /** Transfer to receiver Form values. */
+  value: TransferToReceiver;
+
+  /** From control transfer to receiver. */
+  controls: {
+    amount: AbstractControl;
+    receiver: AbstractControl;
+  };
+};
