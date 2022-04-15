@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 
+import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
@@ -28,6 +29,7 @@ import { TransferHistoryComponent } from './views/transfer-history/transfer-hist
   imports: [
     NgbModule,
     FormsModule,
+    TableModule,
     ButtonModule,
     BrowserModule,
     DropdownModule,
