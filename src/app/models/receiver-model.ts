@@ -1,4 +1,4 @@
-import { AbstractControl, FormControl } from "@angular/forms";
+import { AbstractControl, FormGroup } from "@angular/forms";
 
 export interface Receiver {
   /** Rut and id of the receiver. */
@@ -17,7 +17,7 @@ export interface Receiver {
   accountNumber: number;
 };
 
-export interface ReceiverFormControl extends FormControl {
+export interface ReceiverFormControl extends FormGroup {
   /** Receiver Form values. */
   value: Receiver;
 
