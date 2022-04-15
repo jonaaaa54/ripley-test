@@ -7,10 +7,12 @@
         </th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-rows >
+    <ng-template pTemplate="body" let-rows>
       <tr>
         <td *ngFor="let col of columns">
-          <span class="p-column-title">{{col}}</span>
+          <span class="p-column-title">
+            <strong>{{col}}:</strong>
+          </span>
           {{rows[col]}}
         </td>
       </tr>
