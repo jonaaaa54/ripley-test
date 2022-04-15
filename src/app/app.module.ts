@@ -1,23 +1,25 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AppRoutingModule } from './app-routing.module';
 
-import { NavigationBarComponent } from './views/navigation-bar/navigation-bar.component';
 import { NewReceiverComponent } from './views/new-receiver/new-receiver.component';
+import { NavigationBarComponent } from './views/navigation-bar/navigation-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationBarComponent,
-    NewReceiverComponent
+    NewReceiverComponent,
+    NavigationBarComponent
   ],
   imports: [
+    NgbModule,
+    FormsModule,
     BrowserModule,
-    AppRoutingModule,
-    NgbModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
