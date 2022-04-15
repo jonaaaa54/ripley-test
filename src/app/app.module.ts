@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { NavigationBarComponent } from './views/navigation-bar/navigation-bar.component';
+import { NewReceiverComponent } from './views/new-receiver/new-receiver.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationBarComponent
+    NavigationBarComponent,
+    NewReceiverComponent
   ],
   imports: [
     BrowserModule,
