@@ -1,3 +1,7 @@
 <div class="container mt-4">
   <h1 class="text-left cursor-default">Historial</h1>
+  <div class="table-container">
+    <app-table [columns]="displayedColumns" [rows]="dataSource">
+    </app-table>
+  </div>
 </div>
