@@ -14,12 +14,14 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NewReceiverComponent } from './views/new-receiver/new-receiver.component';
 import { NavigationBarComponent } from './views/navigation-bar/navigation-bar.component';
+import { NewTransferenceComponent } from './views/new-transference/new-transference.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NewReceiverComponent,
-    NavigationBarComponent
+    NavigationBarComponent,
+    NewTransferenceComponent
   ],
   imports: [
     NgbModule,
