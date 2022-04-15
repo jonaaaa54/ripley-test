@@ -11,12 +11,12 @@ import { Receiver, TransferToReceiver, TransferToReceiverFormControl } from 'src
 export class NewTransferenceComponent implements OnInit {
   receiver: Receiver | undefined;
 
-  receiverTransferForm: TransferToReceiverFormControl = 
+  receiverTransferForm: TransferToReceiverFormControl =
     this.formBuilder.group({
       amount: [null, [Validators.required, this.validAmount]],
       receiver: [null, [Validators.required]]
-    })as TransferToReceiverFormControl;
-  
+    }) as TransferToReceiverFormControl;
+
   constructor(private formBuilder: FormBuilder) {
   }
 
