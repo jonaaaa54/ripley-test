@@ -54,7 +54,7 @@
         <div class="d-flex flex-column mt-3">
           <label>Bancos:</label>
           <p-dropdown
-            [options]="cities" 
+            [options]="accountTypes" 
             optionLabel="name" 
             [showClear]="true"
             placeholder="--"
@@ -110,7 +110,7 @@
           El nombre es requerido.
         </strong>
         <div class="d-flex flex-column mt-3">
-          <label for="phoneInput">Télefono:</label>
+          <label for="phoneInput">Teléfono:</label>
           <p-inputNumber
             id="phoneInput"
             styleClass="w-100"
@@ -130,11 +130,12 @@
         <div class="d-flex flex-column mt-3">
           <label>Tipo de cuenta:</label>
           <p-dropdown
-            [options]="cities" 
+            [options]="accountTypes" 
             optionLabel="name" 
             [showClear]="true"
             placeholder="--" 
             styleClass="w-100"
+            optionValue="code"
             [formControl]="newReceiverForm.controls.accountType"
           ></p-dropdown>
           <strong
