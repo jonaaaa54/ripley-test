@@ -1,0 +1,12 @@
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    Banco Ripley
+    {{ this.actualComponent
+      ? '- ' + this.actualComponent
+      : ''
+    }}
+  </a>
+  <a class="btn">Nuevo Destinatario</a>
+  <button class="btn">Transferir</button>
+  <button class="btn">Historial</button>
+</nav>
