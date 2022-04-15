@@ -1,0 +1,23 @@
+.form-direction{
+  flex-direction: row;
+}
+
+.column-margin{
+  margin-right: 40px;
+}
+
+.button-container{
+  margin-top: 45px;
+}
+
+@media (max-width: 600px) {
+  .form-direction{
+    flex-direction: column;
+  }
+  .column-margin{
+    margin-right: 0px;
+  }
+  .button-container{
+    margin-top: 20px;
+  }
+}
