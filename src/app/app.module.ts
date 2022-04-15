@@ -15,13 +15,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { NewReceiverComponent } from './views/new-receiver/new-receiver.component';
 import { NavigationBarComponent } from './views/navigation-bar/navigation-bar.component';
 import { NewTransferenceComponent } from './views/new-transference/new-transference.component';
+import { TransferHistoryComponent } from './views/transfer-history/transfer-history.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NewReceiverComponent,
     NavigationBarComponent,
-    NewTransferenceComponent
+    NewTransferenceComponent,
+    TransferHistoryComponent
   ],
   imports: [
     NgbModule,
