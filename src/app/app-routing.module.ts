@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NewReceiverComponent } from './views/new-receiver/new-receiver.component';
 import { NewTransferenceComponent } from './views/new-transference/new-transference.component';
+import { TransferHistoryComponent } from './views/transfer-history/transfer-history.component';
 
 const routes: Routes = [
   { 
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'new-bank-transference',
     component: NewTransferenceComponent
+  },
+  {
+    path: 'transfer-history',
+    component: TransferHistoryComponent
   }
 ];
 

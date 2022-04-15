@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 
+import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
@@ -12,20 +13,25 @@ import { InputNumberModule } from 'primeng/inputnumber';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { TableComponent } from './components/table/table.component';
 import { NewReceiverComponent } from './views/new-receiver/new-receiver.component';
 import { NavigationBarComponent } from './views/navigation-bar/navigation-bar.component';
 import { NewTransferenceComponent } from './views/new-transference/new-transference.component';
+import { TransferHistoryComponent } from './views/transfer-history/transfer-history.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    TableComponent,
     NewReceiverComponent,
     NavigationBarComponent,
-    NewTransferenceComponent
+    NewTransferenceComponent,
+    TransferHistoryComponent
   ],
   imports: [
     NgbModule,
     FormsModule,
+    TableModule,
     ButtonModule,
     BrowserModule,
     DropdownModule,
