@@ -1,23 +1,27 @@
-.form-direction{
+.form-direction {
   flex-direction: row;
 }
 
-.column-margin{
+.column-margin {
   margin-right: 40px;
 }
 
-.button-container{
+.button-container {
   margin-top: 45px;
 }
 
+.cursor-default {
+  cursor: default;
+}
+
 @media (max-width: 600px) {
-  .form-direction{
+  .form-direction {
     flex-direction: column;
   }
-  .column-margin{
+  .column-margin {
     margin-right: 0px;
   }
-  .button-container{
+  .button-container {
     margin: 20px 0;
   }
 }
