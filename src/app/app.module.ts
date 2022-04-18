@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 
-import { ToastModule } from 'primeng/toast';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
@@ -22,6 +21,7 @@ import { NewReceiverComponent } from './views/new-receiver/new-receiver.componen
 import { NavigationBarComponent } from './views/navigation-bar/navigation-bar.component';
 import { NewTransferenceComponent } from './views/new-transference/new-transference.component';
 import { TransferHistoryComponent } from './views/transfer-history/transfer-history.component';
+import { ErrorCatchingInterceptor } from './interceptors/error-catching.interceptor';
 
 @NgModule({
   declarations: [
@@ -37,7 +37,6 @@ import { TransferHistoryComponent } from './views/transfer-history/transfer-hist
     NgbModule,
     FormsModule,
     TableModule,
-    ToastModule,
     ButtonModule,
     BrowserModule,
     DropdownModule,
@@ -49,7 +48,14 @@ import { TransferHistoryComponent } from './views/transfer-history/transfer-hist
     ReactiveFormsModule,
     BrowserAnimationsModule
   ],
-  providers: [ApiFactory],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorCatchingInterceptor,
+      multi: true
+    },
+    ApiFactory
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
