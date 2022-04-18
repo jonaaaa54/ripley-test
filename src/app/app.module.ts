@@ -6,7 +6,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 
-import { ToastModule } from 'primeng/toast';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
@@ -38,7 +37,6 @@ import { ErrorCatchingInterceptor } from './interceptors/error-catching.intercep
     NgbModule,
     FormsModule,
     TableModule,
-    ToastModule,
     ButtonModule,
     BrowserModule,
     DropdownModule,
