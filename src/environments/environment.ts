@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  title: 'Ripley develop',
+  API_APP: 'http://api.localhost:8080',
+  API_BANK: 'https://bast.dev/'
 };
 
 /*
