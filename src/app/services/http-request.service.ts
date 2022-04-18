@@ -1,8 +1,8 @@
-import { HttpClient, HttpErrorResponse, HttpEvent, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, throwError } from 'rxjs';
+import { HttpClient, HttpEvent } from '@angular/common/http';
 
-type GenericFunction = <T>(x: T) => T;
+import { Observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
