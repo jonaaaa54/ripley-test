@@ -26,12 +26,12 @@ import { TransferHistoryComponent } from './views/transfer-history/transfer-hist
 @NgModule({
   declarations: [
     AppComponent,
+    ToastComponent,
     TableComponent,
     NewReceiverComponent,
     NavigationBarComponent,
     NewTransferenceComponent,
     TransferHistoryComponent,
-    ToastComponent
   ],
   imports: [
     NgbModule,
