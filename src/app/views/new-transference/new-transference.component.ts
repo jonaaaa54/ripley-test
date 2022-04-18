@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs';
 import { getMessage } from 'src/app/constants/message-factory';
 import { AlertsService } from 'src/app/services/alerts.service';
 import { ApiAppService } from 'src/app/services/api-requests/api-app.service';
-import { Receiver, TransferToReceiverFormControl } from 'src/app/models/receiver-model';
+import { Receiver, TransferToReceiver, TransferToReceiverFormControl } from 'src/app/models/receiver-model';
 
 @Component({
   selector: 'app-new-transference',
@@ -19,6 +19,7 @@ export class NewTransferenceComponent implements OnInit, OnDestroy {
   receiver: Receiver | undefined;
 
   subscription: Subscription | undefined;
+  subscription2: Subscription | undefined;
 
   receiverTransferForm: TransferToReceiverFormControl =
     this.formBuilder.group({
@@ -37,10 +38,6 @@ export class NewTransferenceComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription && this.subscription.unsubscribe();
-  };
-
-  transfer() {
-    console.log(this.receiverTransferForm.value);
   };
 
   private validAmount(amount: FormControl): { valid: boolean } | null {
@@ -64,6 +61,24 @@ export class NewTransferenceComponent implements OnInit, OnDestroy {
           })
       );
     this.loading = false;
+  };
+
+  transfer(): void {
+    const transference: TransferToReceiver = this.receiverTransferForm.value;
+    transference.receiver = this.receiver as Receiver;
+    this.subscription2 = this.apiService.addTransference(transference)
+      .subscribe(
+        res => {
+          res && res.ok
+            ? this.savedTransference()
+            : this.alerts.showToastDanger(getMessage('app.transference.add.error'));
+        }
+      );
+  };
+
+  private savedTransference(): void {
+    this.alerts.showToastSuccess(getMessage('app.transference.add.success'));
+    this.receiverTransferForm.reset();
   };
 
   private receiverNotFound(): void {
