@@ -17,8 +17,12 @@
   align-self: center;
 }
 
-.cursor-default{
+.cursor-default {
   cursor: default;
+}
+
+.icon {
+  cursor: pointer;
 }
 
 @media (max-width: 800px) {

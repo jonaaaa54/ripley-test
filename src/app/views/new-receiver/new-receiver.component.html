@@ -1,90 +1,52 @@
 <div class="container mt-4">
   <h1 class="text-left cursor-default">Nuevo Destinatario</h1>
-  <form
-    (ngSubmit)="onSubmit()"
-    [formGroup]="newReceiverForm"
-  >
+  <form (ngSubmit)="onSubmit()" [formGroup]="newReceiverForm">
     <div class="d-flex justify-content-center form-direction mt-5">
       <div class="d-flex flex-column column-margin">
         <div class="form-group">
           <label for="rutInput">Rut:</label>
-          <input
-            pInputText
-            type="text" 
-            id="rutInput"
-            class="form-control"
-            [formControl]="newReceiverForm.controls.rut"
+          <input pInputText type="text" id="rutInput" class="form-control" [formControl]="newReceiverForm.controls.rut"
             [ngClass]="{'ng-invalid ng-dirty': 
-              newReceiverForm.controls.rut.errors && (newReceiverForm.controls.rut.touched || newReceiverForm.controls.rut.dirty)}"
-          />
-          <strong 
-            class="text-danger"
-            *ngIf="
-              newReceiverForm.controls.rut.hasError('required') && newReceiverForm.controls.rut.touched"
-          >
+              newReceiverForm.controls.rut.errors && (newReceiverForm.controls.rut.touched || newReceiverForm.controls.rut.dirty)}" />
+          <strong class="text-danger" *ngIf="
+              newReceiverForm.controls.rut.hasError('required') && newReceiverForm.controls.rut.touched">
             El rut es requerido.
           </strong>
         </div>
         <div class="form-group mt-3">
           <label for="emailInput">Correo:</label>
-          <input
-            pInputText 
-            type="text"
-            id="emailInput"
-            class="form-control"
+          <input pInputText type="text" id="emailInput" class="form-control"
             [formControl]="newReceiverForm.controls.email"
             [ngClass]="{'ng-invalid ng-dirty': 
-              newReceiverForm.controls.email.errors && (newReceiverForm.controls.email.touched || newReceiverForm.controls.email.dirty)}"
-          />
+              newReceiverForm.controls.email.errors && (newReceiverForm.controls.email.touched || newReceiverForm.controls.email.dirty)}" />
         </div>
-        <strong 
-          class="text-danger"
-          *ngIf="
-            newReceiverForm.controls.email.hasError('required') && newReceiverForm.controls.email.touched"
-        >
-          El email es requerido.     
+        <strong class="text-danger" *ngIf="
+            newReceiverForm.controls.email.hasError('required') && newReceiverForm.controls.email.touched">
+          El email es requerido.
         </strong>
-        <strong 
-          class="text-danger"
-          *ngIf="
-            newReceiverForm.controls.email.hasError('email') && newReceiverForm.controls.email.touched"
-        >
-          El email ingresado no es correcto.      
+        <strong class="text-danger" *ngIf="
+            newReceiverForm.controls.email.hasError('email') && newReceiverForm.controls.email.touched">
+          El email ingresado no es correcto.
         </strong>
         <div class="d-flex flex-column mt-3">
           <label>Bancos:</label>
-          <p-dropdown
-            [options]="banks?.banks" 
-            optionLabel="name" 
-            optionValue="name"
-            [showClear]="true"
-            placeholder="--"
-            styleClass="w-100"
-            [formControl]="newReceiverForm.controls.bank"
-          ></p-dropdown>
-          <strong 
-          class="text-danger"
-          *ngIf="
-            newReceiverForm.controls.bank.hasError('required') && newReceiverForm.controls.bank.touched"
-        >
-          El banco es requerido.      
-        </strong>
+          <p-dropdown [options]="banks?.banks" optionLabel="name" optionValue="name" [showClear]="true" placeholder="--"
+            styleClass="w-100" [formControl]="newReceiverForm.controls.bank"></p-dropdown>
+          <strong class="text-danger" *ngIf="
+            newReceiverForm.controls.bank.hasError('required') && newReceiverForm.controls.bank.touched">
+            El banco es requerido.
+          </strong>
         </div>
         <div class="d-flex flex-column mt-3">
           <label for="accountNumberInput">Nº De Cuenta:</label>
-          <p-inputNumber
-            styleClass="w-100"
-            id="accountNumberInput"
-            [useGrouping]="false"
+          <p-inputNumber styleClass="w-100" id="accountNumberInput" [useGrouping]="false"
             [formControl]="newReceiverForm.controls.accountNumber"
             [ngClass]="{'ng-invalid ng-dirty': 
-              newReceiverForm.controls.accountNumber.errors && (newReceiverForm.controls.accountNumber.touched || newReceiverForm.controls.accountNumber.dirty)}"
-          ></p-inputNumber>
-          <strong 
-            class="text-danger"
+              newReceiverForm.controls.accountNumber.errors && (newReceiverForm.controls.accountNumber.touched || newReceiverForm.controls.accountNumber.dirty)}">
+          </p-inputNumber>
+          <strong class="text-danger"
             *ngIf="
-              newReceiverForm.controls.accountNumber.hasError('required') && newReceiverForm.controls.accountNumber.touched"
-          >
+              newReceiverForm.controls.accountNumber.hasError('required') && newReceiverForm.controls.accountNumber.touched">
             El número de cuenta es requerido.
           </strong>
         </div>
@@ -92,74 +54,41 @@
       <div class="d-flex flex-column">
         <div class="form-group">
           <label for="nameInput">Nombre:</label>
-          <input
-            required
-            type="text" 
-            pInputText 
-            id="nameInput"
-            class="form-control"
+          <input required type="text" pInputText id="nameInput" class="form-control"
             [formControl]="newReceiverForm.controls.name"
             [ngClass]="{'ng-invalid ng-dirty': 
-              newReceiverForm.controls.name.errors && (newReceiverForm.controls.name.touched || newReceiverForm.controls.name.dirty)}"
-          />
+              newReceiverForm.controls.name.errors && (newReceiverForm.controls.name.touched || newReceiverForm.controls.name.dirty)}" />
         </div>
-        <strong 
-          class="text-danger"
-          *ngIf="
-            newReceiverForm.controls.name.hasError('required') && newReceiverForm.controls.name.touched"
-        >
+        <strong class="text-danger" *ngIf="
+            newReceiverForm.controls.name.hasError('required') && newReceiverForm.controls.name.touched">
           El nombre es requerido.
         </strong>
         <div class="d-flex flex-column mt-3">
           <label for="phoneInput">Teléfono:</label>
-          <p-inputNumber
-            id="phoneInput"
-            styleClass="w-100"
-            [useGrouping]="false"
+          <p-inputNumber id="phoneInput" styleClass="w-100" [useGrouping]="false"
             [formControl]="newReceiverForm.controls.phone"
             [ngClass]="{'ng-invalid ng-dirty': 
-              newReceiverForm.controls.phone.errors && (newReceiverForm.controls.phone.touched || newReceiverForm.controls.phone.dirty)}" 
-          ></p-inputNumber>
+              newReceiverForm.controls.phone.errors && (newReceiverForm.controls.phone.touched || newReceiverForm.controls.phone.dirty)}"></p-inputNumber>
         </div>
-        <strong 
-          class="text-danger"
-          *ngIf="
-            newReceiverForm.controls.phone.hasError('required') && newReceiverForm.controls.phone.touched"
-        >
+        <strong class="text-danger" *ngIf="
+            newReceiverForm.controls.phone.hasError('required') && newReceiverForm.controls.phone.touched">
           El teléfono es requerido.
         </strong>
         <div class="d-flex flex-column mt-3">
           <label>Tipo de cuenta:</label>
-          <p-dropdown
-            [options]="accountTypes" 
-            optionLabel="name" 
-            [showClear]="true"
-            placeholder="--" 
-            styleClass="w-100"
-            optionValue="code"
-            [formControl]="newReceiverForm.controls.accountType"
-          ></p-dropdown>
-          <strong
-            class="text-danger"
+          <p-dropdown [options]="accountTypes" optionLabel="name" [showClear]="true" placeholder="--" styleClass="w-100"
+            optionValue="name" [formControl]="newReceiverForm.controls.accountType"></p-dropdown>
+          <strong class="text-danger"
             *ngIf="
-              newReceiverForm.controls.accountType.hasError('required') && newReceiverForm.controls.accountType.touched"
-          >
+              newReceiverForm.controls.accountType.hasError('required') && newReceiverForm.controls.accountType.touched">
             El tipo de cuenta es requerido.
           </strong>
         </div>
       </div>
     </div>
-    <div class="d-flex justify-content-center button-container">      
-      <button 
-        pButton
-        pRipple
-        type="submit" 
-        label="Crear" 
-        iconPos="left"
-        icon="pi pi-plus"
-        [disabled]="newReceiverForm.invalid"
-        class="p-button-raised p-button-secondary px-5 py-3"
-      ></button>
+    <div class="d-flex justify-content-center button-container">
+      <button pButton pRipple type="submit" label="Crear" iconPos="left" icon="pi pi-plus"
+        [disabled]="newReceiverForm.invalid" class="p-button-raised p-button-secondary px-5 py-3"></button>
     </div>
   </form>
 </div>

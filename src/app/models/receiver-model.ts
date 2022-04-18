@@ -37,7 +37,7 @@ export interface TransferToReceiver {
   /** Amount to transfer. */
   amount: number;
   /** Receiver to transfer. */
-  receiver: string;
+  receiver: Receiver;
 };
 
 export interface TransferToReceiverFormControl extends FormGroup {
