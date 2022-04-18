@@ -1,9 +1,12 @@
 import { FormBuilder, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
+import { Subscription } from 'rxjs';
+import { Banks } from 'src/app/models/banks-model';
 import { AccountType } from 'src/app/models/account-model';
 import { ACCOUNT_TYPES_FACTORY } from 'src/app/constants/account-types';
 import { Receiver, ReceiverFormControl } from 'src/app/models/receiver-model';
+import { ApiBanksService } from 'src/app/services/api-requests/api-banks.service';
 
 @Component({
   selector: 'app-new-receiver',
@@ -11,7 +14,9 @@ import { Receiver, ReceiverFormControl } from 'src/app/models/receiver-model';
   styleUrls: ['./new-receiver.component.scss']
 })
 
-export class NewReceiverComponent implements OnInit {
+export class NewReceiverComponent implements OnInit, OnDestroy {
+  banks: Banks | undefined;
+  subscription: Subscription | undefined;
   accountTypes: AccountType[]  = ACCOUNT_TYPES_FACTORY;
 
   newReceiverForm: ReceiverFormControl =
@@ -25,9 +30,21 @@ export class NewReceiverComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]]
     }) as ReceiverFormControl;
 
-  constructor(private formBuilder: FormBuilder) { };
+  constructor(
+    private formBuilder: FormBuilder,
+    private apiBankService: ApiBanksService
+  ) { };
 
-  ngOnInit(): void { };
+  ngOnInit(): void { 
+    this.subscription = this.apiBankService.getBanks()
+      .subscribe(
+        banks => this.banks = banks
+      );
+  };
+
+  ngOnDestroy(): void {
+    this.subscription && this.subscription.unsubscribe();
+  };
 
   saveReceiver(): void { 
     console.log(this.newReceiverForm.value);
