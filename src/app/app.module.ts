@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -37,6 +38,7 @@ import { TransferHistoryComponent } from './views/transfer-history/transfer-hist
     DropdownModule,
     InputTextModule,
     ScrollingModule,
+    HttpClientModule,
     AppRoutingModule,
     InputNumberModule,
     ReactiveFormsModule,
