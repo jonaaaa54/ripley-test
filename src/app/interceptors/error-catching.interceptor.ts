@@ -9,28 +9,30 @@ import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 
 import { catchError, map, Observable, throwError } from 'rxjs';
+import { AlertsService } from '../services/alerts.service';
 
 @Injectable()
 export class ErrorCatchingInterceptor implements HttpInterceptor {
 
-  constructor(private router: Router) {
-  };
+  constructor(
+    private router: Router,
+    private alerts: AlertsService
+  ) {};
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request)
       .pipe(
         map(res => res),
         catchError((error: HttpErrorResponse) => {
-          let errorMsg = '';
           if (error.error instanceof ErrorEvent) {
-            console.log('This is client side error');
+            /** Client-side error. */
+            this.alerts.showToastDanger('Error');
             this.router.navigate(['/transfer-history']);
           } else {
-            console.log('This is server side error');
-            errorMsg = `Error Code: ${error.status},  Message: ${error.message}`;
+            this.alerts.showToastDanger('Server-side error.');
             this.router.navigate(['/transfer-history']);
-          }
-          return throwError(() => errorMsg);
+          };
+          return throwError(() => error.message);
         }));
   };
 };
