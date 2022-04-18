@@ -13,6 +13,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputNumberModule } from 'primeng/inputnumber';
 
 import { AppComponent } from './app.component';
+import { ApiFactory } from './config/api-config';
 import { AppRoutingModule } from './app-routing.module';
 import { TableComponent } from './components/table/table.component';
 import { NewReceiverComponent } from './views/new-receiver/new-receiver.component';
@@ -44,7 +45,7 @@ import { TransferHistoryComponent } from './views/transfer-history/transfer-hist
     ReactiveFormsModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [ApiFactory],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
