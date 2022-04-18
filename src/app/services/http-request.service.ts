@@ -1,6 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpEvent, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { catchError, Observable, throwError } from 'rxjs';
 
+type GenericFunction = <T>(x: T) => T;
 @Injectable({
   providedIn: 'root'
 })
@@ -9,19 +11,46 @@ export class HttpRequestService {
   constructor(private httpClient: HttpClient) {
   };
 
-  public get(url: string, option?: any){
-    return this.httpClient.get(url, option);
+  public get<T>(url: string): Observable<T> {
+    return this.httpClient.get<T>(url);
   };
 
-  public post(url: string, data: any, option?: any){
-    return this.httpClient.post(url, data,option);
+  public getWithHeaders<T>(
+    url: string,
+    option: any): Observable<HttpEvent<T>> {
+    return this.httpClient.get<T>(url, option);
   };
 
-  public put(url: string, data: any, option?: any) {
-    return this.httpClient.put(url, data, option);
+  public post<T>(url: string, data: any): Observable<T> {
+    return this.httpClient.post<T>(url, data);
   };
 
-  public delete(url: string, option?: any){
-    return this.httpClient.delete(url, option);
+  public postWithHeaders<T>(
+    url: string,
+    data: any,
+    option?: any): Observable<HttpEvent<T>> {
+    return this.httpClient.post<T>(url, data, option);
   };
+
+  public put<T>(url: string, data: any): Observable<T> {
+    return this.httpClient.put<T>(url, data);
+  };
+
+  public putWithHeaders<T>(
+    url: string,
+    data: any,
+    option?: any): Observable<HttpEvent<T>> {
+    return this.httpClient.put<T>(url, data, option);
+  };
+
+  public delete<T>(url: string): Observable<T> {
+    return this.httpClient.delete<T>(url);
+  };
+
+  public deleteWithHeaders<T>(
+    url: string,
+    option?: any): Observable<HttpEvent<T>> {
+    return this.httpClient.delete<T>(url, option);
+  };
+
 };
