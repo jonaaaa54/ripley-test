@@ -1,7 +1,7 @@
 <div class="container mt-4">
   <h1 class="text-left cursor-default">Nuevo Destinatario</h1>
   <form
-    (ngSubmit)="saveReceiver()"
+    (ngSubmit)="onSubmit()"
     [formGroup]="newReceiverForm"
   >
     <div class="d-flex justify-content-center form-direction mt-5">
@@ -56,6 +56,7 @@
           <p-dropdown
             [options]="banks?.banks" 
             optionLabel="name" 
+            optionValue="name"
             [showClear]="true"
             placeholder="--"
             styleClass="w-100"

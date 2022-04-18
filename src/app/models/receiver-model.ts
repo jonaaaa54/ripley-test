@@ -14,7 +14,7 @@ export interface Receiver {
   /** Type of bank account of the receiver. */ 
   accountType: string;
   /** Number of bank account of the receiver. */
-  accountNumber: number;
+  accountNumber: string;
 };
 
 export interface ReceiverFormControl extends FormGroup {
