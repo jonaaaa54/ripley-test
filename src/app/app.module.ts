@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 
+import { ToastModule } from 'primeng/toast';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
@@ -16,6 +17,7 @@ import { AppComponent } from './app.component';
 import { ApiFactory } from './config/api-config';
 import { AppRoutingModule } from './app-routing.module';
 import { TableComponent } from './components/table/table.component';
+import { ToastComponent } from './components/toast/toast.component';
 import { NewReceiverComponent } from './views/new-receiver/new-receiver.component';
 import { NavigationBarComponent } from './views/navigation-bar/navigation-bar.component';
 import { NewTransferenceComponent } from './views/new-transference/new-transference.component';
@@ -28,12 +30,14 @@ import { TransferHistoryComponent } from './views/transfer-history/transfer-hist
     NewReceiverComponent,
     NavigationBarComponent,
     NewTransferenceComponent,
-    TransferHistoryComponent
+    TransferHistoryComponent,
+    ToastComponent
   ],
   imports: [
     NgbModule,
     FormsModule,
     TableModule,
+    ToastModule,
     ButtonModule,
     BrowserModule,
     DropdownModule,
