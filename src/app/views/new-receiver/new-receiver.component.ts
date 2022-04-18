@@ -4,6 +4,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Banks } from 'src/app/models/banks-model';
 import { AccountType } from 'src/app/models/account-model';
+import { AlertsService } from 'src/app/services/alerts.service';
 import { ACCOUNT_TYPES_FACTORY } from 'src/app/constants/account-types';
 import { Receiver, ReceiverFormControl } from 'src/app/models/receiver-model';
 import { ApiBanksService } from 'src/app/services/api-requests/api-banks.service';
@@ -31,6 +32,7 @@ export class NewReceiverComponent implements OnInit, OnDestroy {
     }) as ReceiverFormControl;
 
   constructor(
+    private alerts: AlertsService,
     private formBuilder: FormBuilder,
     private apiBankService: ApiBanksService
   ) { };
@@ -46,7 +48,8 @@ export class NewReceiverComponent implements OnInit, OnDestroy {
     this.subscription && this.subscription.unsubscribe();
   };
 
-  saveReceiver(): void { 
+  saveReceiver(): void {
+    this.alerts.showToastSuccess('Receptor creado exitosamente');
     console.log(this.newReceiverForm.value);
   };
 
