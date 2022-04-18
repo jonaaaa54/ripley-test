@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AlertsService } from 'src/app/services/alerts.service';
+
 @Component({
   selector: 'app-toast',
   templateUrl: './toast.component.html',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToastComponent implements OnInit {
 
-  constructor() { }
+  constructor(public service: AlertsService) {
+  };
 
   ngOnInit(): void {
-  }
+  };
 
-}
+};
