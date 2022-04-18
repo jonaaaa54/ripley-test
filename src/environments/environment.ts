@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   title: 'Ripley develop',
   API_APP: 'http://api.localhost:8080',
-  API_BANK: 'https://bast.dev/'
+  API_BANK: 'https://bast.dev/api'
 };
 
 /*
