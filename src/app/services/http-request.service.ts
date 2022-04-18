@@ -17,7 +17,8 @@ export class HttpRequestService {
 
   public getWithHeaders<T>(
     url: string,
-    option: any): Observable<HttpEvent<T>> {
+    option: any
+  ): Observable<HttpEvent<T>> {
     return this.httpClient.get<T>(url, option);
   };
 
@@ -28,7 +29,8 @@ export class HttpRequestService {
   public postWithHeaders<T>(
     url: string,
     data: any,
-    option?: any): Observable<HttpEvent<T>> {
+    option?: any
+  ): Observable<HttpEvent<T>> {
     return this.httpClient.post<T>(url, data, option);
   };
 
@@ -39,7 +41,8 @@ export class HttpRequestService {
   public putWithHeaders<T>(
     url: string,
     data: any,
-    option?: any): Observable<HttpEvent<T>> {
+    option?: any
+  ): Observable<HttpEvent<T>> {
     return this.httpClient.put<T>(url, data, option);
   };
 
@@ -49,7 +52,8 @@ export class HttpRequestService {
 
   public deleteWithHeaders<T>(
     url: string,
-    option?: any): Observable<HttpEvent<T>> {
+    option?: any
+  ): Observable<HttpEvent<T>> {
     return this.httpClient.delete<T>(url, option);
   };
 
