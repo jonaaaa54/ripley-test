@@ -23,7 +23,8 @@ export class TransferHistoryComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     const data = await firstValueFrom(this.route.data);
     this.transferences = data['transferHistory'].data;
-    this.tableData = this.getTableData(this.transferences);
+    /** Reverse cause the new transferences are in final of array. */
+    this.tableData = (this.getTableData(this.transferences)).reverse();
   };
 
   getTableData(transferences: TransferToReceiver[]): TableData[] {
