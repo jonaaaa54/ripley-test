@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
+import { InputMaskModule } from 'primeng/inputmask';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputNumberModule } from 'primeng/inputnumber';
 
@@ -42,6 +43,7 @@ import { ErrorCatchingInterceptor } from './interceptors/error-catching.intercep
     DropdownModule,
     InputTextModule,
     ScrollingModule,
+    InputMaskModule,
     HttpClientModule,
     AppRoutingModule,
     InputNumberModule,
