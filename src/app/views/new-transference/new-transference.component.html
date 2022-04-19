@@ -4,8 +4,9 @@
     <div class="d-flex flex-column input-hidden-number-arrows">
       <label>Buscar Destinatario:</label>
       <div class="d-flex justify-content-center align-items-center">
-        <input pInputText type='number' class="input-number input-default-width"
-          [formControl]="receiverTransferForm.controls.receiver" />
+        <p-inputMask mask="99.999.999-9" class="input-number input-default-width"
+          [formControl]="receiverTransferForm.controls.receiver" >
+        </p-inputMask>
         <button class="btn icon" (click)="isReceiverValid()">
           <i style="font-size: 2rem;" class="pi pi-search">
           </i>
@@ -16,8 +17,9 @@
     </div>
     <div class="d-flex flex-column mt-2">
       <label>Monto:</label>
-      <input pInputText type="number" class="input-default-width"
-        [formControl]="receiverTransferForm.controls.amount" />
+      <p-inputNumber styleClass="w-100" mode="currency" currency="CLP"
+        [formControl]="receiverTransferForm.controls.amount">
+      </p-inputNumber>
       <small class="form-text text-muted">Recuerda que el monto debe ser mayor a $0.</small>
     </div>
     <div class="d-flex justify-content-center mt-3 mb-3">

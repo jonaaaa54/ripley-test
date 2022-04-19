@@ -22,6 +22,15 @@ const routes: Routes = [
       transferHistory: TransferHistoryContentResolver
     }
   },
+  {
+    path: '', 
+    component: NewReceiverComponent
+  },
+  {
+    path: '**', 
+    redirectTo: '/new-receiver'
+  }
+
 ];
 
 @NgModule({

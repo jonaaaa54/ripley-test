@@ -3,11 +3,12 @@
   <form (ngSubmit)="onSubmit()" [formGroup]="newReceiverForm">
     <div class="d-flex justify-content-center form-direction mt-5">
       <div class="d-flex flex-column column-margin">
-        <div class="form-group">
+        <div class="d-flex flex-column">
           <label for="rutInput">Rut:</label>
-          <input pInputText type="text" id="rutInput" class="form-control" [formControl]="newReceiverForm.controls.rut"
+          <p-inputMask mask="99.999.999-9" id="rutInput" [formControl]="newReceiverForm.controls.rut"
             [ngClass]="{'ng-invalid ng-dirty': 
-              newReceiverForm.controls.rut.errors && (newReceiverForm.controls.rut.touched || newReceiverForm.controls.rut.dirty)}" />
+              newReceiverForm.controls.rut.errors && (newReceiverForm.controls.rut.touched || newReceiverForm.controls.rut.dirty)}" >
+          </p-inputMask>
           <strong class="text-danger" *ngIf="
               newReceiverForm.controls.rut.hasError('required') && newReceiverForm.controls.rut.touched">
             El rut es requerido.
