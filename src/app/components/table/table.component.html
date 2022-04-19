@@ -11,7 +11,7 @@
       <tr>
         <td class="default-cursor" *ngFor="let col of (columns || localColumns)">
           <span class="p-column-title">
-            <strong>{{col}}:</strong>
+            <strong>{{col.label}}:</strong>
           </span>
           {{rows[col.key]}}
         </td>
