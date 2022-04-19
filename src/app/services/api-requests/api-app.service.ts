@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { ApiFactory } from 'src/app/config/api-config';
-import { Receiver } from 'src/app/models/receiver-model';
+import { Receiver, TransferToReceiver } from 'src/app/models/receiver-model';
 import { ResponseBase } from 'src/app/models/response-base';
 import { HttpRequestService } from '../http-request.service';
 
@@ -11,18 +11,28 @@ import { HttpRequestService } from '../http-request.service';
   providedIn: 'root'
 })
 export class ApiAppService {
-  
+
   constructor(
     private apiUrls: ApiFactory,
     private httpService: HttpRequestService
-  ) {};
+  ) { };
 
   addReceiver(data: Receiver): Observable<ResponseBase<Receiver>> {
-      return this.httpService.post(this.apiUrls.API_APP + '/receiver', data);
+    return this.httpService.post(this.apiUrls.API_APP + '/receiver', data);
   };
 
   getReceiverByRut(rut: string): Observable<ResponseBase<Receiver>> {
-    return this.httpService.get(this.apiUrls.API_APP + '/transference/' + rut);
+    return this.httpService.get(this.apiUrls.API_APP + '/receiver/' + rut);
   };
 
-}
+  addTransference(
+    data: TransferToReceiver
+  ): Observable<ResponseBase<TransferToReceiver>> {
+    return this.httpService.post(this.apiUrls.API_APP + '/transference', data);
+  };
+
+  getAllTransferences(): Observable<ResponseBase<TransferToReceiver[]>> {
+    return this.httpService.get(this.apiUrls.API_APP + '/transference');
+  };
+
+};

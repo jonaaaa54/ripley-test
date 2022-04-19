@@ -1,19 +1,19 @@
 <div class="card">
-  <p-table [value]="rows" responsiveLayout="stack" styleClass="p-datatable-striped">
+  <p-table [paginator]="true" [rows]="5" [value]="rows" responsiveLayout="stack" styleClass="p-datatable-striped">
     <ng-template pTemplate="header">
       <tr>
-        <th class="default-cursor" *ngFor="let col of columns">
-          {{col}}
+        <th class="default-cursor" *ngFor="let col of (columns || localColumns)">
+          {{col.label}}
         </th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-rows>
       <tr>
-        <td class="default-cursor" *ngFor="let col of columns">
+        <td class="default-cursor" *ngFor="let col of (columns || localColumns)">
           <span class="p-column-title">
-            <strong>{{col}}:</strong>
+            <strong>{{col.label}}:</strong>
           </span>
-          {{rows[col]}}
+          {{rows[col.key]}}
         </td>
       </tr>
     </ng-template>

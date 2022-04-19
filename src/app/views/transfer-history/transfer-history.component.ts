@@ -1,33 +1,42 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
-interface Car {
-  manufacturer: string;
-  model: string;
-  powerSupply: "petrol" | "diesel" | "electricity";
-};
+import { firstValueFrom } from 'rxjs';
+
+import { TableData } from 'src/app/models/components/table-models';
+import { TransferToReceiver } from 'src/app/models/receiver-model';
+import { TABLE_DEFAULT_HEADERS } from 'src/app/constants/components/table-headers';
+
 @Component({
   selector: 'app-transfer-history',
   templateUrl: './transfer-history.component.html',
   styleUrls: ['./transfer-history.component.scss']
 })
 export class TransferHistoryComponent implements OnInit {
-  public displayedColumns = ["manufacturer", "model", "powerSupply"];
-  public dataSource: Car[] = [
-    {
-      manufacturer: "Tesla",
-      model: "Model 3",
-      powerSupply: "electricity",
-    },
-    {
-      manufacturer: "Ferrari",
-      model: "458",
-      powerSupply: "petrol",
-    },
-  ];
+  tableData: TableData[] = [];
+  tableHeaders = TABLE_DEFAULT_HEADERS;
+  transferences: TransferToReceiver[] = [];
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) {
+  };
 
-  ngOnInit(): void {
-  }
+  async ngOnInit(): Promise<void> {
+    const data = await firstValueFrom(this.route.data);
+    this.transferences = data['transferHistory'].data;
+    /** Reverse cause the new transferences are in final of array. */
+    this.tableData = (this.getTableData(this.transferences)).reverse();
+  };
 
-}
+  getTableData(transferences: TransferToReceiver[]): TableData[] {
+    return transferences.map(transfer => {
+      return {
+        name: transfer.receiver.name,
+        rut: transfer.receiver.rut,
+        bank: transfer.receiver.bank,
+        accountType: transfer.receiver.accountType,
+        amount: transfer.amount,
+      };
+    })
+  };
+
+};

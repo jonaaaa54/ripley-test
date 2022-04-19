@@ -6,7 +6,8 @@ import { Subscription } from 'rxjs';
 import { getMessage } from 'src/app/constants/message-factory';
 import { AlertsService } from 'src/app/services/alerts.service';
 import { ApiAppService } from 'src/app/services/api-requests/api-app.service';
-import { Receiver, TransferToReceiverFormControl } from 'src/app/models/receiver-model';
+import { Receiver, TransferToReceiver, TransferToReceiverFormControl } from 'src/app/models/receiver-model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-transference',
@@ -14,11 +15,10 @@ import { Receiver, TransferToReceiverFormControl } from 'src/app/models/receiver
   styleUrls: ['./new-transference.component.scss']
 })
 export class NewTransferenceComponent implements OnInit, OnDestroy {
-  loading: boolean = false;
-  isReceiver: boolean = true;
   receiver: Receiver | undefined;
 
   subscription: Subscription | undefined;
+  subscription2: Subscription | undefined;
 
   receiverTransferForm: TransferToReceiverFormControl =
     this.formBuilder.group({
@@ -27,6 +27,7 @@ export class NewTransferenceComponent implements OnInit, OnDestroy {
     }) as TransferToReceiverFormControl;
 
   constructor(
+    private router: Router,
     private alerts: AlertsService,
     private formBuilder: FormBuilder,
     private apiService: ApiAppService
@@ -37,10 +38,7 @@ export class NewTransferenceComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription && this.subscription.unsubscribe();
-  };
-
-  transfer() {
-    console.log(this.receiverTransferForm.value);
+    this.subscription2 && this.subscription2.unsubscribe();
   };
 
   private validAmount(amount: FormControl): { valid: boolean } | null {
@@ -51,9 +49,7 @@ export class NewTransferenceComponent implements OnInit, OnDestroy {
 
   isReceiverValid(): void {
     const { receiver } = this.receiverTransferForm.value;
-    
-    this.loading = true;
-    this.isReceiver = false;
+
     receiver &&
       (this.subscription = this.apiService.getReceiverByRut(receiver as unknown as string)
         .subscribe(
@@ -63,7 +59,25 @@ export class NewTransferenceComponent implements OnInit, OnDestroy {
               : this.receiverNotFound();
           })
       );
-    this.loading = false;
+  };
+
+  transfer(): void {
+    const transference: TransferToReceiver = this.receiverTransferForm.value;
+    transference.receiver = this.receiver as Receiver;
+    this.subscription2 = this.apiService.addTransference(transference)
+      .subscribe(
+        res => {
+          res && res.ok
+            ? this.savedTransference()
+            : this.alerts.showToastDanger(getMessage('app.transference.add.error'));
+        }
+      );
+  };
+
+  private savedTransference(): void {
+    this.alerts.showToastSuccess(getMessage('app.transference.add.success'));
+    this.receiverTransferForm.reset();
+    this.router.navigate(['/transfer-history']);
   };
 
   private receiverNotFound(): void {
@@ -72,8 +86,8 @@ export class NewTransferenceComponent implements OnInit, OnDestroy {
   };
 
   private receiverFound(data: Receiver): void {
-    this.isReceiver = true
-    this.receiver = data;
+    this.receiver = data
+    this.receiverTransferForm.get('receiver')?.disable();
   };
 
 };
