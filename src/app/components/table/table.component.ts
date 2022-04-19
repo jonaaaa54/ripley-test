@@ -10,26 +10,12 @@ import { Column, Row } from 'src/app/models/components/table-models';
 })
 export class TableComponent<T> implements OnInit {
   @Input() rows: Row<T>[] | undefined;
-  @Input() getColumns?: boolean = false; 
   @Input() columns?: Column<T>[] = [];
 
-  localColumns: string[] = [];
-
-  constructor(private router: Router) { 
-    if(this.getColumns) this.localColumns = this.getColumnsFromObject();
-  }
+  constructor() { 
+  };
 
   ngOnInit(): void {
-    if(this.getColumns) this.localColumns = this.getColumnsFromObject(); 
-  }
-
-  private getColumnsFromObject(): string[] {
-    if(this.rows)
-      return Object.keys(this.rows)
-        .map( keys =>
-          (keys.replace(/[A-Z]/g, ' $&').trim()).toLowerCase()
-        );
-    return [];
   };
 
 };
