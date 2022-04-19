@@ -7,6 +7,7 @@ import { getMessage } from 'src/app/constants/message-factory';
 import { AlertsService } from 'src/app/services/alerts.service';
 import { ApiAppService } from 'src/app/services/api-requests/api-app.service';
 import { Receiver, TransferToReceiver, TransferToReceiverFormControl } from 'src/app/models/receiver-model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-transference',
@@ -14,8 +15,6 @@ import { Receiver, TransferToReceiver, TransferToReceiverFormControl } from 'src
   styleUrls: ['./new-transference.component.scss']
 })
 export class NewTransferenceComponent implements OnInit, OnDestroy {
-  loading: boolean = false;
-  isReceiver: boolean = true;
   receiver: Receiver | undefined;
 
   subscription: Subscription | undefined;
@@ -28,6 +27,7 @@ export class NewTransferenceComponent implements OnInit, OnDestroy {
     }) as TransferToReceiverFormControl;
 
   constructor(
+    private router: Router,
     private alerts: AlertsService,
     private formBuilder: FormBuilder,
     private apiService: ApiAppService
@@ -38,6 +38,7 @@ export class NewTransferenceComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription && this.subscription.unsubscribe();
+    this.subscription2 && this.subscription2.unsubscribe();
   };
 
   private validAmount(amount: FormControl): { valid: boolean } | null {
@@ -48,9 +49,7 @@ export class NewTransferenceComponent implements OnInit, OnDestroy {
 
   isReceiverValid(): void {
     const { receiver } = this.receiverTransferForm.value;
-    
-    this.loading = true;
-    this.isReceiver = false;
+
     receiver &&
       (this.subscription = this.apiService.getReceiverByRut(receiver as unknown as string)
         .subscribe(
@@ -60,7 +59,6 @@ export class NewTransferenceComponent implements OnInit, OnDestroy {
               : this.receiverNotFound();
           })
       );
-    this.loading = false;
   };
 
   transfer(): void {
@@ -79,6 +77,7 @@ export class NewTransferenceComponent implements OnInit, OnDestroy {
   private savedTransference(): void {
     this.alerts.showToastSuccess(getMessage('app.transference.add.success'));
     this.receiverTransferForm.reset();
+    this.router.navigate(['/transfer-history']);
   };
 
   private receiverNotFound(): void {
@@ -87,8 +86,8 @@ export class NewTransferenceComponent implements OnInit, OnDestroy {
   };
 
   private receiverFound(data: Receiver): void {
-    this.isReceiver = true
-    this.receiver = data;
+    this.receiver = data
+    this.receiverTransferForm.get('receiver')?.disable();
   };
 
 };
